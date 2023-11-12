@@ -1,0 +1,7 @@
+.tableS {
+  width: 65%;
+  margin: 0 auto; /* Define as margens: superior e inferior como 0, e lateral como automática (centraliza) */
+  margin-bottom: 0;
+  table-layout: fixed;
+  text-align: center;
+}

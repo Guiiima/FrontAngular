@@ -1,0 +1,95 @@
+<div class="navbar-container" [ngClass]="{ collapsed: isNavbarCollapsed }">
+  <nav>
+    <ul *ngIf="!isNavbarCollapsed">
+      <mat-icon> list_alt</mat-icon>
+      <li>
+        <a
+          routerLink="/contoleDeLivro"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Controle de Livro</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/eontroledDeCliente"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Controle de Cliente</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/editoraFiliada"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Editora Afiliada</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/emprestimo"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Empréstimo</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/evento"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Evento</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/livraria"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Livraria</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/reserva"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Reserva</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/salaDeEstudo"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Sala de Estudo</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/fornecedores"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Fornecedores</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/funcionarios"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Funcionários</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/login"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Login</a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
