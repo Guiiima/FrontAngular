@@ -1,2 +1,66 @@
-<p>study-room-controller works!</p>
 <app-nav-bar></app-nav-bar>
+
+<div class="container">
+  <div class="formSearch">
+    <form>
+      <mat-form-field>
+        <mat-label>Capacidade Mínima</mat-label>
+        <input matInput #capacityInput>
+      </mat-form-field>
+      <button mat-raised-button (click)="searchByCapacity(capacityInput.value)">Buscar</button>
+    </form>
+  </div>
+
+  <button class="new-room-button" mat-raised-button (click)="openForm()">Nova Sala</button>
+</div>
+
+<div class="modal-overlay" *ngIf="showForm">
+
+  <form class="modal-content" (submit)="newRoom(roomNumber.value, capacity.value)">
+    <mat-form-field>
+      <mat-label>Nº da Sala</mat-label>
+      <input matInput #roomNumber>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Capacidade</mat-label>
+      <input matInput #capacity required>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type="submit">Criar Sala</button>
+  </form>
+
+</div>
+
+<div class="tableS">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="roomNumber">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.roomNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="capacity">
+      <th mat-header-cell *matHeaderCellDef>Capacidade</th>
+      <td mat-cell *matCellDef="let element">{{ element.capacity }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="isAvailable">
+      <th mat-header-cell *matHeaderCellDef>Disponível</th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="element.isAvailable; else notAvailable">Disponível</span>
+        <ng-template #notAvailable>Ocupado</ng-template>
+
+    </ng-container>
+
+    <ng-contaioner matColumnDef="occupation">
+      <th mat-header-cell *matHeaderCellDef>Ocupação</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-stroked-button (click)="changeOccupation(element)">{{ element.isAvailable ? 'Reservar' : 'Liberar'
+          }}</button>
+      </td>
+    </ng-contaioner>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
