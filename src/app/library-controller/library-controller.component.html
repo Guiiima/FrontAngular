@@ -1,2 +1,22 @@
-<p>library-controller works!</p>
 <app-nav-bar></app-nav-bar>
+<div style="display: flex; justify-content: center; align-items: center;">
+  <div style="width: 80%">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id da Livraria</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="quantEmployees">
+        <th mat-header-cell *matHeaderCellDef>Quantidade de Funcionarios</th>
+        <td mat-cell *matCellDef="let element">{{ element.quantEmployees }}</td>
+      </ng-container>
+      <ng-container matColumnDef="quantBook">
+        <th mat-header-cell *matHeaderCellDef>Quantidade de Livros</th>
+        <td mat-cell *matCellDef="let element">{{ element.quantBook }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
