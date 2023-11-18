@@ -1,2 +1,139 @@
-<p>supplier-controller works!</p>
 <app-nav-bar></app-nav-bar>
+
+<div class="container">
+
+    <button class="new-supplier-button" mat-raised-button (click)="openForm()">Novo Fornecedor</button>
+</div>
+
+<div class="modal-overlay" *ngIf="showForm">
+    <form (submit)="newSupplier(name.value, contact.value, contractStart.value, contractEnd.value)">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput #name required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Contato</mat-label>
+            <input matInput #contact>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Início do Contrato</mat-label>
+            <input matInput [matDatepicker]="picker1" #contractStart required>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Final do Contrato</mat-label>
+            <input matInput [matDatepicker]="picker2" #contractEnd>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-slide-toggle [(ngModel)]="contractStatus" name="contractStatus">Contrato Ativo</mat-slide-toggle>
+        <br>
+        <button mat-raised-button type="submit">Criar Fornecedor</button>
+    </form>
+</div>
+
+<div class="modal-overlay" *ngIf="showModifySupplierForm">
+    <form (submit)="modifySupplier()">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput #nameEdit [(ngModel)]="editSupplier.name" name="edit_name" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Contato</mat-label>
+            <input matInput #contactEdit [(ngModel)]="editSupplier.contact" name="edit_contact">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Início do Contrato</mat-label>
+            <input matInput [matDatepicker]="picker1" #contractStartEdit [(ngModel)]="editSupplier.contractStart"
+                name="edit_contractStart" required>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Final do Contrato</mat-label>
+            <input matInput [matDatepicker]="picker2" #contractEndEdit [(ngModel)]="editSupplier.contractEnd"
+                name="edit_contractEnd">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-slide-toggle [(ngModel)]="editSupplier.contractStatus" name="edit_contractStatus">Contrato
+            Ativo</mat-slide-toggle>
+        <br>
+        <button mat-raised-button type="submit">Editar Fornecedor</button>
+    </form>
+</div>
+
+<div class="modal-overlay" *ngIf="showChangeSupplierContractForm">
+    <form (submit)="changeSupplierContract()">
+        <mat-form-field>
+            <mat-label>Início do Contrato</mat-label>
+            <input matInput [matDatepicker]="picker1" #contractStartEditContrac [(ngModel)]="editSupplierContract.contractStart"
+                name="edit_contractStart" required>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Final do Contrato</mat-label>
+            <input matInput [matDatepicker]="picker2" #contractEndEdit [(ngModel)]="editSupplierContract.contractEnd"
+                name="edit_contractEnd">
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <br>
+        <mat-slide-toggle [(ngModel)]="editSupplierContract.contractStatus" name="edit_contractStatus">Contrato
+            Ativo</mat-slide-toggle>
+        <br>
+        <button mat-raised-button type="submit">Editar Contrato</button>
+    </form>
+</div>
+
+<div class="tableS">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Nome</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="contact">
+            <th mat-header-cell *matHeaderCellDef>Contato</th>
+            <td mat-cell *matCellDef="let element">{{ element.contact }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="contractStart">
+            <th mat-header-cell *matHeaderCellDef>Início do Contrato</th>
+            <td mat-cell *matCellDef="let element">{{ element.contractStart }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="contractEnd">
+            <th mat-header-cell *matHeaderCellDef>Final do Contrato</th>
+            <td mat-cell *matCellDef="let element">{{ element.contractEnd }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="contractStatus">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{ element.contractStatus ? 'Ativo' : 'Inativo' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef>Opções</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-stroked-button (click)="showModifySupplier(element)">Editar</button>
+                <button mat-stroked-button (click)="showChangeSupplierContract(element)">Alterar Contrato</button>
+                <button mat-stroked-button (click)="deleteSupplier(element)">Excluir</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>

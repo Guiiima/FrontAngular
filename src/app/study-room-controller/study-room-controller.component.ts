@@ -26,11 +26,11 @@ export class StudyRoomControllerComponent implements OnInit {
     this.loadAllRooms();
   }
 
-  changeOccupation(item: StudyRoom): void{
-    this.studyRoomService.changeOccupation(item.roomNumber).subscribe(resp => {
+  changeOccupation(item: StudyRoom): void {
+    this.studyRoomService.changeOccupation(item.roomNumber).subscribe(() => {
       this.loadAllRooms();
     });
-    
+
     console.log(item)
   }
 
@@ -38,8 +38,8 @@ export class StudyRoomControllerComponent implements OnInit {
     event?.preventDefault();
     var capacity = Number(capacityInput)
     this.studyRoomService.findRoomsByCapacity(capacity).subscribe(rooms => {
-      
-      this.dataSource = new MatTableDataSource<StudyRoom>(rooms)
+
+      this.dataSource = new MatTableDataSource<StudyRoom>(rooms);
     });
   }
 
@@ -47,7 +47,7 @@ export class StudyRoomControllerComponent implements OnInit {
     this.showForm = true;
   }
 
-  newRoom(roomNumber: string, capacity: string): void {   
+  newRoom(roomNumber: string, capacity: string): void {
     var room = new StudyRoom();
     if (isNaN(room.roomNumber = Number(roomNumber))) {
       alert("O campo 'Nº da Sala' deve conter um valor numérico");
@@ -64,7 +64,7 @@ export class StudyRoomControllerComponent implements OnInit {
   }
 
   private loadAllRooms(): void {
-    this.studyRoomService.allRooms().subscribe(rooms =>{
+    this.studyRoomService.allRooms().subscribe(rooms => {
       this.dataSource = new MatTableDataSource<StudyRoom>(rooms);
     })
   }
