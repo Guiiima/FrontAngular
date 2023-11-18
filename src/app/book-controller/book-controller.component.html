@@ -1,2 +1,42 @@
-<p>book-controller works!</p>
 <app-nav-bar></app-nav-bar>
+<div style="display: flex; justify-content: center; align-items: center;">
+  <div style="width: 80%">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id do livro</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Titulo</th>
+        <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+      </ng-container>
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Autor</th>
+        <td mat-cell *matCellDef="let element">{{ element.author }}</td>
+      </ng-container>
+      <ng-container matColumnDef="publishingCompany">
+        <th mat-header-cell *matHeaderCellDef>Editora</th>
+        <td mat-cell *matCellDef="let element">{{ element.publishingCompany }}</td>
+      </ng-container>
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Genero</th>
+        <td mat-cell *matCellDef="let element">{{ element.genre }}</td>
+      </ng-container>
+      <ng-container matColumnDef="quantStock">
+        <th mat-header-cell *matHeaderCellDef>Estoque</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.quantStock }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="synopsis">
+        <th mat-header-cell *matHeaderCellDef>Sinopse</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.synopsis }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
