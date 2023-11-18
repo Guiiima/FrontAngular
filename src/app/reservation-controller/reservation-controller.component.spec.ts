@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ReservationControllerComponent } from './reservation-controller.component';
 
 describe('ReservationControllerComponent', () => {
@@ -8,10 +7,9 @@ describe('ReservationControllerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReservationControllerComponent]
-    })
-    .compileComponents();
-    
+      declarations: [ReservationControllerComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ReservationControllerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -20,4 +18,5 @@ describe('ReservationControllerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
