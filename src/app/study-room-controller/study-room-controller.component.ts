@@ -24,6 +24,7 @@ export class StudyRoomControllerComponent implements OnInit {
   constructor(private studyRoomService: StudyRoomService) { }
   ngOnInit(): void {
     this.loadAllRooms();
+
   }
 
   changeOccupation(item: StudyRoom): void {
@@ -38,8 +39,7 @@ export class StudyRoomControllerComponent implements OnInit {
     event?.preventDefault();
     var capacity = Number(capacityInput)
     this.studyRoomService.findRoomsByCapacity(capacity).subscribe(rooms => {
-
-      this.dataSource = new MatTableDataSource<StudyRoom>(rooms);
+      this.dataSource = new MatTableDataSource<StudyRoom>(rooms)
     });
   }
 
