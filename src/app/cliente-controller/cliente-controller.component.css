@@ -1,7 +1,20 @@
-.tableS {
-  width: 65%;
-  margin: 0 auto; /* Define as margens: superior e inferior como 0, e lateral como automática (centraliza) */
-  margin-bottom: 0;
-  table-layout: fixed;
-  text-align: center;
+.tableS{
+  width: 80%;
+  display: inline;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Ícone de cursor de ponteiro ao passar o mouse sobre o botão */
+  background-color: #dce6dc; /* Cor de fundo do botão */
+  color: #fff; /* Cor do texto do botão */
+  border: none; /* Remover a borda padrão do botão */
+  border-radius: 4px; /* Borda arredondada */
+  float: right;
+  margin-bottom: 20px;
+}
+button:hover {
+  background-color: #d7dfd7;
 }
