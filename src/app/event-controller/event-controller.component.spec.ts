@@ -1,17 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { EventControllerComponent } from './event-controller.component';
 
-describe('EventControllerComponent', () => {
+describe('ReservationControllerComponent', () => {
   let component: EventControllerComponent;
   let fixture: ComponentFixture<EventControllerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EventControllerComponent]
-    })
-    .compileComponents();
-    
+      declarations: [EventControllerComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(EventControllerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -20,4 +18,5 @@ describe('EventControllerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
