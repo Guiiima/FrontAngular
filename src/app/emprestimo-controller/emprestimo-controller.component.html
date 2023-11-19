@@ -1,2 +1,66 @@
-<p>emprestimo-controller works!</p>
 <app-nav-bar></app-nav-bar>
+
+<div class="container">
+    <div class="container">
+      <div
+        class="col-6 border border-light rounded p-5 shadow"
+        *ngIf="formulario"
+      >
+        <h6>{{ tituloFormulario }}</h6>
+        <form [formGroup]="formulario" (ngSubmit)="enviarFormulario()">
+          <div class="form-group">
+            <div class="form-group">
+              <label>ID Emprestimo</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="id"
+              />
+            </div>
+            <div class="form-group">
+              <label>ID do Cliente</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="clientId"
+              />
+            </div>
+            <label>ID do livro</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="bookId"
+            />
+          </div>
+          <div class="form-group">
+            <label>Dia do Emprestimo</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="dataDeEmprestimo"
+            />
+          </div>
+          <div class="form-group">
+            <label>Data devolução</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="dataDeEmprestimo"
+            />
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div>
+                <button type="submit" class="btn btn-sm btn-outline-secondary">
+                  Salvar
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

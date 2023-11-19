@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
+import { EditoraAfiliadaService } from './editora-afiliada.service';
+import { EditoraAfiliada } from './EditoraAfiliada';
 
 @Component({
     selector: 'app-editora-afiliada-controller',
