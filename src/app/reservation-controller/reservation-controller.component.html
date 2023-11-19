@@ -1,2 +1,53 @@
-<p>reservation-controller works!</p>
 <app-nav-bar></app-nav-bar>
+
+<div class="container">
+  <div class="formSearch">
+    <form>
+      <mat-form-field>
+        <mat-label>Id do Cliente</mat-label>
+        <input matInput #clientIdInput>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Id do Livro</mat-label>
+        <input matInput #bookIdInput>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="createReservation(clientIdInput.value, bookIdInput.value)">Criar Reserva</button>
+    </form>
+  </div>
+
+  <div class="tableS">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="clientId">
+        <th mat-header-cell *matHeaderCellDef>No. Cliente</th>
+        <td mat-cell *matCellDef="let element">{{ element.clientId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="bookId">
+        <th mat-header-cell *matHeaderCellDef>No. Livro</th>
+        <td mat-cell *matCellDef="let element">{{ element.bookId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="reservationDate">
+        <th mat-header-cell *matHeaderCellDef>Data da Reserva</th>
+        <td mat-cell *matCellDef="let element">{{ element.reservationDate | date:'short' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cancelReservation">
+        <th mat-header-cell *matHeaderCellDef>Cancelar Reserva</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button (click)="cancelReservation(element)">Cancelar</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
