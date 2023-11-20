@@ -1,39 +1,35 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup } from '@angular/forms';
 import { NavBarComponent } from "../nav-bar/nav-bar.component";
 import { EmprestimoService } from './emprestimo.service';
 import { Emprestimo } from './Emprestimo';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { CdkTableDataSourceInput } from '@angular/cdk/table';
+
 
 @Component({
     selector: 'app-emprestimo-controller',
     standalone: true,
     templateUrl: './emprestimo-controller.component.html',
     styleUrl: './emprestimo-controller.component.css',
-    imports: [CommonModule, NavBarComponent, ReactiveFormsModule]
+    imports: [CommonModule, NavBarComponent, MatTableModule]
 })
 export class EmprestimoControllerComponent {
-    formulario: any;
-    tituloFormulario: string = '';
-    
-    constructor(private emprestimoService : EmprestimoService) { }
-
-    ngOnInit(): void {
-        this.tituloFormulario = 'Novo Emprestimo';
-        this.formulario = new FormGroup({
-        id: new FormControl(null),
-        clientId: new FormControl(null),
-        bookId: new FormControl(null),
-        dataDeEmprestimo: new FormControl(null),
-        dataDeDevolucao: new FormControl(null),
-
-        })
+    displayedColumns: string[] = ['Id', 'clientId', 'bookId', 'dataDeEmprestimo',  'dataDeDevolucao'];
+    dataSource: CdkTableDataSourceInput<Emprestimo> = new MatTableDataSource<Emprestimo>();
+    showForm: boolean = false;
+  
+    constructor(private emprestimoService: EmprestimoService){}
+    ngOnInit(){
+      this.ObterLista();
     }
-    enviarFormulario(): void {
-        const emprestimo : Emprestimo = this.formulario.value;
-        this.emprestimoService.newEmprestimo(emprestimo).subscribe();
-    } 
+  
+  
+    async ObterLista(){
+      await this.emprestimoService.listar().subscribe(emprestimos => {
+        this.dataSource = new MatTableDataSource<Emprestimo>(emprestimos);
+      })
+    }
 
     
 }

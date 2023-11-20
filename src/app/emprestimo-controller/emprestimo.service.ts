@@ -21,9 +21,4 @@ export class EmprestimoService {
     return this.http.get<Emprestimo[]>(url);
   }
 
-  newEmprestimo(emprestimo: Emprestimo): Observable<any> {
-    const url = `${this.baseUrl}/new`;
-    return this.http.post<Emprestimo>(url, emprestimo, httpOptions);
-  }
-
 }

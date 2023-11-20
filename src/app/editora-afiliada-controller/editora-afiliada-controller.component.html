@@ -1,2 +1,26 @@
-<p>editora-afiliada-controller works!</p>
 <app-nav-bar></app-nav-bar>
+<div style="display: flex; justify-content: center; align-items: center;">
+  <div style="width: 80%">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Identificação da Editora</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="contato">
+        <th mat-header-cell *matHeaderCellDef>Contato</th>
+        <td mat-cell *matCellDef="let element">{{ element.contato }}</td>
+      </ng-container>
+      <ng-container matColumnDef="autores">
+        <th mat-header-cell *matHeaderCellDef>Autores</th>
+        <td mat-cell *matCellDef="let element">{{ element.autores }}</td>
+      </ng-container>
+      <ng-container matColumnDef="qtdLivrosPublicados">
+        <th mat-header-cell *matHeaderCellDef>Livros publicados</th>
+        <td mat-cell *matCellDef="let element">{{ element.qtdLivrosPublicados }}</td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

@@ -15,7 +15,7 @@ import { WorkerControllerComponent } from './worker-controller/worker-controller
 export const routes: Routes = [
     { path: 'contoleDeLivro', component: BookControllerComponent },
     { path: 'eontroledDeCliente', component: ClienteControllerComponent },
-    { path: 'editoraFiliada', component: EditoraAfiliadaControllerComponent},
+    { path: 'editoraAfiliada', component: EditoraAfiliadaControllerComponent},
     { path: 'emprestimo', component: EmprestimoControllerComponent},
     { path: 'evento', component: EventControllerComponent},
     { path: 'livraria', component: LibraryControllerComponent},

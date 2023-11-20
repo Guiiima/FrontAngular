@@ -21,10 +21,4 @@ export class EditoraAfiliadaService {
     return this.http.get<EditoraAfiliada[]>(url);
   }
 
-  newEditora(editora: EditoraAfiliada): Observable<any> {
-    const url = `${this.baseUrl}/new`;
-    return this.http.post<EditoraAfiliada>(url, editora, httpOptions);
-  }
-
-
 }
