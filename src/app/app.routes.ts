@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
 import { BookControllerComponent } from './book-controller/book-controller.component';
 import { ClienteControllerComponent } from './cliente-controller/cliente-controller.component';
 import { EditoraAfiliadaControllerComponent } from './editora-afiliada-controller/editora-afiliada-controller.component';
