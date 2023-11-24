@@ -15,7 +15,7 @@ import { CdkTableDataSourceInput } from '@angular/cdk/table';
     imports: [CommonModule, NavBarComponent, MatTableModule]
 })
 export class EmprestimoControllerComponent {
-    displayedColumns: string[] = ['Id', 'clientId', 'bookId', 'dataDeEmprestimo',  'dataDeDevolucao'];
+    displayedColumns: string[] = ['clientId', 'bookId', 'dataDeEmprestimo',  'dataDeDevolucao'];
     dataSource: CdkTableDataSourceInput<Emprestimo> = new MatTableDataSource<Emprestimo>();
     showForm: boolean = false;
   

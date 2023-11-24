@@ -4,8 +4,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
-
-import { StudyRoomService } from './study-room-controller/study-room.service';
 import { AppComponent } from './app.component';
 
 
@@ -22,7 +20,6 @@ import { AppComponent } from './app.component';
   ],
   providers: [
     HttpClientModule,
-    StudyRoomService,
   ]
 })
 export class AppModule { }
