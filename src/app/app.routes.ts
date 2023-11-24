@@ -23,5 +23,5 @@ export const routes: Routes = [
     { path: 'salaDeEstudo', component: StudyRoomControllerComponent},
     { path: 'fornecedores', component: SupplierControllerComponent},
     { path: 'funcionarios', component: WorkerControllerComponent},
-    { path: '', component: LoginComponent}
+    { path: '', component: WorkerControllerComponent}
 ];
